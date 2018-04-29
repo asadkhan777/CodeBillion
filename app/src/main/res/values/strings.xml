@@ -1,0 +1,7 @@
+<resources>
+    <string name="code_hint_text">Start coding here</string>
+    <string name="inputs_hint">Inputs (if any)</string>
+    <string name="submit">Submit</string>
+    <string name="output">Output :</string>
+    <string name="clear">Clear</string>
+</resources>

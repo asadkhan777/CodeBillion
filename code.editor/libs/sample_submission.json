@@ -1,0 +1,34 @@
+{
+  "source_code" : "",
+  "language_id": 0,
+  "stdin": "",
+  "expected_output": "",
+  "cpu_time_limit": 2.0,
+  "cpu_extra_time": 0.5,
+  "wall_time_limit": 10.0,
+  "memory_limit": 256,
+  "stack_limit": 256,
+  "max_processes_and_or_threads": 2,
+  "enable_per_process_and_thread_time_limit": true,
+  "enable_per_process_and_thread_memory_limit": true,
+  "max_file_size": 4,
+  "number_of_runs": 1,
+
+  "stdout": "",
+  "stderr": "",
+  "compile_output": "",
+  "message": "",
+  "exit_code": 0,
+  "exit_signal": 0,
+  "status": {
+    "id": 3,
+    "description": "Accepted"
+  },
+  "created_at": "",
+  "finished_at": "",
+  "token": "",
+  "time": "",
+  "wall_time": "",
+  "memory": 256.0
+}
+

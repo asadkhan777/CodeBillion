@@ -1,6 +1,16 @@
 apply plugin: 'com.android.instantapp'
 
 dependencies {
+
     implementation project(':code.editor')
+
     implementation project(':base')
+}
+
+android {
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
