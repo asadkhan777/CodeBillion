@@ -5,9 +5,13 @@ import com.asadkhan.codebillion.code.editor.base.models.CompileResultDO;
 import com.asadkhan.codebillion.code.editor.base.models.TokenDO;
 import com.asadkhan.codebillion.code.editor.base.presenters.Repository;
 
+import javax.inject.Singleton;
+
 import io.reactivex.Observable;
 import retrofit2.Response;
 
+
+@Singleton
 public interface CompilerRepository extends Repository {
 
     Observable<Response<TokenDO>> compile(CompileRequestDO compileRequestDO);

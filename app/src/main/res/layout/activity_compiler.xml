@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    tools:context=".features.editor.view.MainActivity">
+    tools:context=".features.editor.view.CompilerActivity">
 
     <ScrollView
         android:id="@+id/sv_scrolling_window"
@@ -17,6 +17,7 @@
             android:id="@+id/ll_content_window"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="48dp"
             android:orientation="vertical">
 
             <Spinner
@@ -65,19 +66,45 @@
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:background="@android:color/white"
-                    android:text="@string/clear"
-                    android:textColor="@color/colorPrimaryDark" />
+                    android:text="@string/clear" />
 
             </RelativeLayout>
 
             <TextView
-                android:id="@+id/tv_result"
+                android:id="@+id/tv_result_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:padding="8dp"
                 android:text="@string/output"
                 android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_result_success"
+                android:text="@string/success"
+                android:layout_margin="8dp"
+                android:padding="8dp"
+                android:textSize="16sp"
+                android:gravity="center_vertical"
+                android:background="@color/bright_green"
+                android:textColor="@color/dark_green"
+                android:drawableEnd="@android:drawable/ic_secure"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tv_result_failure"
+                android:text="@string/failure"
+                android:layout_margin="8dp"
+                android:padding="8dp"
+                android:textSize="16sp"
+                android:gravity="center_vertical"
+                android:background="@color/tuscan_red"
+                android:textColor="@color/red"
+                android:drawableEnd="@android:drawable/ic_delete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
         </LinearLayout>
     </ScrollView>
 

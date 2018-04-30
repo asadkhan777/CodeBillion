@@ -6,4 +6,5 @@ import com.asadkhan.codebillion.code.editor.base.views.BaseView;
 public interface CompilerView extends BaseView {
 
     void displayResults(CompileResultDO compileResultDO);
+
 }

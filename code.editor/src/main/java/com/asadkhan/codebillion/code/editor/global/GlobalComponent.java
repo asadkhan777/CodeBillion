@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.ContentResolver;
 import android.content.Context;
 
+import com.asadkhan.codebillion.code.editor.data.CompilerRepository;
+import com.asadkhan.codebillion.code.editor.data.di.DataModule;
 import com.asadkhan.network.di.NetworkModule;
 import com.asadkhan.network.interactors.NetworkService;
 import com.asadkhan.persistence.auth.AuthenticationService;
@@ -24,7 +26,7 @@ import dagger.Component;
                 NetworkModule.class,        // network
                 ThreadingModule.class,      // thread management
                 PersistenceModule.class,    // persistence
-                // DataModule.class,        // data = persistence + n/w
+                DataModule.class,           // data = persist + n/w + thread
                 // ServicesModule.class     // services
         }
 )
@@ -53,9 +55,15 @@ public interface GlobalComponent {
 
         ContentResolver getContentResolver();
 
+
         /** Thread management dependencies
          */
 
         ThreadHandler getThreadHandler();
+
+        /** Data dependencies
+         */
+
+        CompilerRepository getCompilerRepository();
 
 }

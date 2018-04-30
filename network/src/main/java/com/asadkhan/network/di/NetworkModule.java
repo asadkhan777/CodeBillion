@@ -1,6 +1,8 @@
 package com.asadkhan.network.di;
 
 
+import android.support.annotation.NonNull;
+
 import com.asadkhan.network.BuildConfig;
 import com.asadkhan.network.interactors.NetworkManager;
 import com.asadkhan.network.interactors.NetworkService;
@@ -9,6 +11,7 @@ import com.asadkhan.network.interactors.retrofit.RetrofitService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.io.UnsupportedEncodingException;
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Singleton;
@@ -17,9 +20,12 @@ import dagger.Module;
 import dagger.Provides;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+
+import static java.net.URLDecoder.decode;
 
 
 @Module
@@ -29,7 +35,11 @@ public class NetworkModule {
 
     private static final String PROD_BASE_URL = "https://api.judge0.com";
 
-    private static final String DEBUG_BASE_URL = "http://192.1681.11:3000";
+    // At home
+    // private static final String DEBUG_BASE_URL = "http://192.1681.11:3000";
+
+    // At work
+    private static final String DEBUG_BASE_URL = "http:192.168.1.73:3000";
 
     @Provides
     @Singleton
@@ -54,10 +64,40 @@ public class NetworkModule {
     public OkHttpClient provideOkHttpClient(Interceptor interceptor) {
         return new OkHttpClient.Builder()
                 .addInterceptor(interceptor)
+                // .addInterceptor(urlDecodingInterceptor())
                 .connectTimeout(70, TimeUnit.SECONDS)
                 .readTimeout(70, TimeUnit.SECONDS)
                 .writeTimeout(70, TimeUnit.SECONDS)
                 .build();
+    }
+
+    @NonNull
+    private Interceptor urlDecodingInterceptor() {
+        return chain -> {
+            Request request = chain.request();
+            String urlEncoded;
+            String urlDecoded;
+
+            urlEncoded = request.url().toString();
+            urlDecoded = decodeUrlFromRequest(urlEncoded);
+
+            Request newRequest = request.newBuilder()
+                    .url(urlDecoded)
+                    .build();
+
+            return chain.proceed(newRequest);
+        };
+    }
+
+    private String decodeUrlFromRequest(String urlEncoded) {
+        String urlDecoded;
+        try {
+            urlDecoded = decode(urlEncoded, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            urlDecoded = urlEncoded;
+        }
+        return urlDecoded;
     }
 
     @Provides

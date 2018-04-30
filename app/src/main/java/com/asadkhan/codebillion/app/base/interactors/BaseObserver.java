@@ -1,4 +1,4 @@
-package com.asadkhan.codebillion.app.features.editor.interactor;
+package com.asadkhan.codebillion.app.base.interactors;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;

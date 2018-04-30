@@ -41,7 +41,7 @@ public class CompilerDataRepository extends DataRepository implements CompilerRe
 
     @Override
     public Observable<Response<TokenDO>> compile(CompileRequestDO request) {
-        String path = "/submissions/";
+        String path = "submissions";
         return networkService
                 .post(TokenDO.class, path, request)
                 .compose(schedule());
@@ -58,7 +58,7 @@ public class CompilerDataRepository extends DataRepository implements CompilerRe
 
     @Override
     public Observable<Response<CompileResultDO>> fetchResults(String token) {
-        String path = String.format("/submissions/%s", token);
+        String path = String.format("submissions/%s/", token);
         return networkService
                 .get(CompileResultDO.class, path)
                 .compose(schedule());
