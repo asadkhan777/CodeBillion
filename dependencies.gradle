@@ -1,0 +1,56 @@
+ext {
+    versions = [
+            compileSdk            : 27,
+            targetSdk             : 27,
+            devSdk                : 21,
+            minSdk                : 16,
+
+            buildToolsVersion     : "27.0.3",
+            supportLib            : '27.1.0',
+
+            constraintVersion     : '1.1.1',
+            crashlyticsVer        : '2.9.1',
+
+            // butterKnifeVersion    : '8.4.0',
+            butterKnifeVersion    : '8.8.1',
+
+            daggerVersion         : '2.15',
+            jsr250Version         : '1.0',
+
+            rxJavaVersion         : '2.1.12',
+            rxAndroidVersion      : '2.0.2',
+            retrofitVersion       : '2.4.0',
+            okhttpVersion         : '3.10.0',
+
+
+    ]
+    libs = [
+
+            supV4                 : "com.android.support:support-v4:$versions.supportLib",
+            appcompatV7           : "com.android.support:appcompat-v7:$versions.supportLib",
+            appcompatDesign       : "com.android.support:design:$versions.supportLib",
+
+            constraintLayout      : "com.android.support.constraint:constraint-layout:$versions.constraintVersion",
+            kotlin                : "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version",
+
+            rxJava                : "io.reactivex.rxjava2:rxjava:$versions.rxJavaVersion",
+            rxAndroid             : "io.reactivex.rxjava2:rxandroid:$versions.rxAndroidVersion",
+
+            butterknife           : "com.jakewharton:butterknife:$versions.butterKnifeVersion",
+            butterknifeCompiler   : "com.jakewharton:butterknife-compiler:$versions.butterKnifeVersion",
+
+            dagger                : "com.google.dagger:dagger:$versions.daggerVersion",
+            daggerJSR250          : "javax.annotation:jsr250-api:$versions.jsr250Version",
+            daggerCompiler        : "com.google.dagger:dagger-compiler:$versions.daggerVersion",
+            daggerAndroid         : "com.google.dagger:dagger-android:$versions.daggerVersion",
+            daggerAndroidCompiler : "com.google.dagger:dagger-android-processor:$versions.daggerVersion",
+
+            retrofit              : "com.squareup.retrofit2:retrofit:$versions.retrofitVersion",
+            retrofitRxAdapter     : "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofitVersion",
+            gson                  : "com.squareup.retrofit2:converter-gson:$versions.retrofitVersion",
+            okHttpLogging         : "com.squareup.okhttp3:logging-interceptor:$versions.okhttpVersion",
+
+            crashlytics           : "com.crashlytics.sdk.android:crashlytics:$versions.crashlyticsVer@aar",
+
+    ]
+}

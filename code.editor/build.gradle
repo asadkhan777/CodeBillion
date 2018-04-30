@@ -1,12 +1,22 @@
 apply plugin: 'com.android.feature'
 
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+apply from: '../dependencies.gradle'
+
 android {
+
     compileSdkVersion 27
+
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 27
+
         versionCode 1
         versionName "1.0"
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -15,11 +25,26 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
     implementation project(':base')
+
+    api project(':network')
+    api project(':persistence')
+    implementation project(':threading')
+
+    // Dagger (dependency injection)
+    implementation libs.dagger
+    kapt libs.daggerCompiler
+    compileOnly libs.daggerJSR250
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
