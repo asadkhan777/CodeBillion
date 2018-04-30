@@ -1,5 +1,6 @@
 package com.asadkhan.codebillion.app.features.editor.utilities;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -52,7 +53,10 @@ public class LanguageUtil {
     };
 
     public static List<String> getAllLanguages() {
-        return Arrays.asList(list);
+        List<String> dataList = new ArrayList<>();
+        dataList.add("Please select a language");
+        dataList.addAll(Arrays.asList(list));
+        return dataList;
     }
 
     public static int getLanguageId(String language) {

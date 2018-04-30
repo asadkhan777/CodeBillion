@@ -17,17 +17,17 @@
             android:id="@+id/ll_content_window"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="48dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="72dp">
 
             <Spinner
                 android:id="@+id/sp_language"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="6dp"
+                android:elevation="10dp"
                 android:padding="6dp"
                 android:spinnerMode="dialog"
-                android:elevation="10dp"
                 tools:listitem="@android:layout/activity_list_item" />
 
             <EditText
@@ -39,7 +39,7 @@
                 android:hint="@string/code_hint_text"
                 android:inputType="textMultiLine"
                 android:isScrollContainer="true"
-                android:minHeight="300dp"
+                android:minHeight="200dp"
                 android:padding="8dp" />
 
             <RelativeLayout
@@ -78,35 +78,36 @@
                 android:layout_margin="8dp"
                 android:padding="8dp"
                 android:text="@string/output"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/tv_result_success"
-                android:text="@string/success"
-                android:visibility="gone"
-                android:layout_margin="8dp"
-                android:padding="8dp"
-                android:textSize="16sp"
-                android:gravity="center_vertical"
-                android:background="@color/bright_green"
-                android:textColor="@color/dark_green"
-                android:drawableEnd="@android:drawable/ic_secure"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@color/bright_green"
+                android:drawableEnd="@android:drawable/ic_secure"
+                android:gravity="center_vertical"
+                android:padding="8dp"
+                android:text="@string/success"
+                android:textColor="@color/dark_green"
+                android:textSize="16sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/tv_result_failure"
-                android:text="@string/failure"
-                android:visibility="gone"
-                android:layout_margin="8dp"
-                android:padding="8dp"
-                android:textSize="16sp"
-                android:gravity="center_vertical"
-                android:background="@color/tuscan_red"
-                android:textColor="@color/red"
-                android:drawableEnd="@android:drawable/ic_delete"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@color/tuscan_red"
+                android:drawableEnd="@android:drawable/ic_delete"
+                android:gravity="center_vertical"
+                android:padding="8dp"
+                android:text="@string/failure"
+                android:textColor="@color/red"
+                android:textSize="16sp"
+                android:visibility="gone" />
 
         </LinearLayout>
     </ScrollView>
