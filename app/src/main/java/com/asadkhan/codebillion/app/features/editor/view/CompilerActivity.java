@@ -23,6 +23,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import butterknife.OnTextChanged;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
@@ -30,13 +31,12 @@ import static android.widget.Toast.LENGTH_LONG;
 import static android.widget.Toast.makeText;
 import static com.asadkhan.codebillion.app.features.editor.utilities.LanguageUtil.getAllLanguages;
 import static com.asadkhan.codebillion.app.features.editor.utilities.LanguageUtil.getLanguageId;
-import static com.asadkhan.codebillion.app.features.editor.utilities.TemplateUtil.cpp;
 import static com.asadkhan.codebillion.app.features.editor.utilities.TemplateUtil.getTemplate;
 
 public class CompilerActivity extends BaseActivity implements CompilerView {
 
     public static final String EXECUTION_FAILED = "Execution Failed";
-    
+
     @BindView(R.id.et_code_text)
     EditText etCodeEditText;
 
@@ -52,14 +52,15 @@ public class CompilerActivity extends BaseActivity implements CompilerView {
     @BindView(R.id.tv_result_failure)
     TextView tvFailure;
 
+    @BindView(R.id.tv_result_title)
+    TextView tvResultTitle;
+
     @Inject
     CompilerPresenter presenter;
 
     ArrayAdapter<String> adapter;
     List<String> languageList;
 
-    private String sourceCode = "";
-    private String input = "";
     private int languageId = -1;
 
     @Override
@@ -70,8 +71,7 @@ public class CompilerActivity extends BaseActivity implements CompilerView {
                 .inject(this);
         languageList = getAllLanguages();
         setUpSpinner();
-        spLanguage.setSelection(2);
-        etCodeEditText.setText(cpp());
+        spLanguage.setSelection(0);
     }
 
     private void setUpSpinner() {
@@ -85,7 +85,7 @@ public class CompilerActivity extends BaseActivity implements CompilerView {
 
                 String lang = adapter.getItem(position);
 
-                languageId = getLanguageId(lang);
+                languageId = getLanguageId(lang); // Since first element is placeholder
                 String template = getTemplate(lang);
 
                 etCodeEditText.setText(template);
@@ -101,6 +101,11 @@ public class CompilerActivity extends BaseActivity implements CompilerView {
 
     }
 
+    @OnTextChanged( { R.id.et_code_text, R.id.et_inputs } )
+    public void textEdited(CharSequence c, int i, int j, int k) {
+        tvResultTitle.setVisibility(GONE);
+    }
+
     @OnClick(R.id.bt_clear)
     public void clear() {
         etCodeEditText.setText("");
@@ -109,9 +114,16 @@ public class CompilerActivity extends BaseActivity implements CompilerView {
 
     @OnClick(R.id.bt_submit)
     public void submit() {
-        sourceCode = etCodeEditText.getText().toString();
-        input = etInputText.getText().toString();
+        String sourceCode = etCodeEditText.getText().toString();
+        String input = etInputText.getText().toString();
+
+        hideResultWidget();
+
         CompileRequestDO requestDO;
+        if (languageId == -1) {
+            showMessage("Please select a valid language");
+            return;
+        }
         if (isEmpty(sourceCode)) {
             showMessage("Please provide some input!");
             return;
@@ -121,9 +133,13 @@ public class CompilerActivity extends BaseActivity implements CompilerView {
         if (notEmpty(input)) {
             requestDO.setStdin(input);
         }
+        presenter.compile(requestDO);
+    }
+
+    private void hideResultWidget() {
+        tvResultTitle.setVisibility(GONE);
         tvFailure.setVisibility(GONE);
         tvSuccess.setVisibility(GONE);
-        presenter.compile(requestDO);
     }
 
     private boolean isEmpty(String string) {
@@ -182,6 +198,7 @@ public class CompilerActivity extends BaseActivity implements CompilerView {
         int resultCode = getResultCode(resultDO.getStatus());
         String error = "";
 
+        tvResultTitle.setVisibility(VISIBLE);
         switch (resultCode) {
 
             case 3:
