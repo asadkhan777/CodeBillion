@@ -35,6 +35,8 @@ import static com.asadkhan.codebillion.app.features.editor.utilities.TemplateUti
 
 public class CompilerActivity extends BaseActivity implements CompilerView {
 
+    public static final String EXECUTION_FAILED = "Execution Failed";
+    
     @BindView(R.id.et_code_text)
     EditText etCodeEditText;
 
@@ -77,18 +79,18 @@ public class CompilerActivity extends BaseActivity implements CompilerView {
         spLanguage.setAdapter(adapter);
         spLanguage.setPrompt("Select a language");
         spLanguage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                System.err.println(position);
+
                 String lang = adapter.getItem(position);
 
                 languageId = getLanguageId(lang);
                 String template = getTemplate(lang);
+
                 etCodeEditText.setText(template);
                 etCodeEditText.setSelection(etCodeEditText.getText().length());
-
-                System.err.println(id);
-                System.err.println(lang);
+                System.err.println("Selected language : " + lang);
             }
 
             @Override
@@ -109,15 +111,27 @@ public class CompilerActivity extends BaseActivity implements CompilerView {
     public void submit() {
         sourceCode = etCodeEditText.getText().toString();
         input = etInputText.getText().toString();
-        CompileRequestDO requestDO = new CompileRequestDO();
-        if (notEmpty(sourceCode)) {
-            // showMessage(sourceCode);
+        CompileRequestDO requestDO;
+        if (isEmpty(sourceCode)) {
+            showMessage("Please provide some input!");
+            return;
+        } else {
             requestDO = new CompileRequestDO(sourceCode, languageId);
         }
         if (notEmpty(input)) {
             requestDO.setStdin(input);
         }
+        tvFailure.setVisibility(GONE);
+        tvSuccess.setVisibility(GONE);
         presenter.compile(requestDO);
+    }
+
+    private boolean isEmpty(String string) {
+        return string == null || string.isEmpty();
+    }
+
+    private boolean isEmpty(Editable editable) {
+        return editable == null || editable.toString().isEmpty();
     }
 
     private boolean notEmpty(String string) {
@@ -164,6 +178,7 @@ public class CompilerActivity extends BaseActivity implements CompilerView {
 
     private void handleResult(CompileResultDO resultDO) {
         if (resultDO == null) return;
+        tvFailure.setText(EXECUTION_FAILED);
         int resultCode = getResultCode(resultDO.getStatus());
         String error = "";
 
@@ -205,13 +220,21 @@ public class CompilerActivity extends BaseActivity implements CompilerView {
                 error = "Internal Error";
                 break;
 
-            default: error = "Something went wrong";
+            default:
+                error = "Something went wrong";
         }
         if (notEmpty(error)) {
             tvFailure.setVisibility(VISIBLE);
             tvSuccess.setVisibility(GONE);
             String text = tvFailure.getText().toString();
+
             text += "\n\n" + error;
+            if (notEmpty(resultDO.getStderr()))
+                text += "\n\n" + resultDO.getStderr();
+
+            if (notEmpty(resultDO.getCompileOutput()))
+                text += "\n\n" + resultDO.getCompileOutput();
+
             tvFailure.setText(text);
         }
     }

@@ -1,6 +1,7 @@
 package com.asadkhan.network.interactors;
 
 
+import java.util.HashMap;
 import java.util.Map;
 
 import io.reactivex.Observable;
@@ -145,4 +146,5 @@ public interface NetworkService {
             @NonNull String url);
 
 
+    HashMap<String, String> getFieldsMap();
 }

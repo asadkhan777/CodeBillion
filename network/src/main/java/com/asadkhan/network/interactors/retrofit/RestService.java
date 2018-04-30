@@ -36,14 +36,14 @@ interface RestService {
 
     @GET("{path}")
     Observable<Response<ResponseBody>> getWithQueries(
-            @NonNull @Path("path") String path,
-            @NonNull @QueryMap Map<String, String> queryMap
+            @NonNull @Path(value = "path", encoded = true) String path,
+            @NonNull @QueryMap(encoded = true) Map<String, String> queryMap
     );
 
     @GET("{path}")
     Observable<Response<ResponseBody>> getWithQueries(
-            @NonNull @Path("path") String path,
-            @NonNull @QueryMap Map<String, String> queryMap,
+            @NonNull @Path(value = "path", encoded = true) String path,
+            @NonNull @QueryMap(encoded = true) Map<String, String> queryMap,
             @NonNull @HeaderMap Map<String, String> headerMap
     );
 
@@ -60,18 +60,18 @@ interface RestService {
     @GET
     Observable<Response<ResponseBody>> getWithQueriesFrom(
             @NonNull @Url String url,
-            @NonNull @QueryMap Map<String, String> queryMap,
+            @NonNull @QueryMap(encoded = true) Map<String, String> queryMap,
             @NonNull @HeaderMap Map<String, String> headerMap
     );
 
     @POST("{path}")
     Observable<Response<ResponseBody>> post(
-            @NonNull @Path("path") String path,
+            @NonNull @Path(value = "path", encoded = true) String path,
             @NonNull @Body RequestBody body);
 
     @POST("{path}")
     Observable<Response<ResponseBody>> post(
-            @NonNull @Path("path") String path,
+            @NonNull @Path(value = "path", encoded = true) String path,
             @NonNull @HeaderMap Map<String, String> headerMap,
             @NonNull @Body RequestBody body
     );
@@ -93,19 +93,19 @@ interface RestService {
     Observable<Response<ResponseBody>> postAt(
             @NonNull @Url String url,
             @NonNull @HeaderMap Map<String, String> headerMap,
-            @NonNull @QueryMap Map<String, String> params,
+            @NonNull @QueryMap(encoded = true) Map<String, String> params,
             @NonNull @Body RequestBody requestBody);
 
 
     @PUT("{path}")
     Observable<Response<ResponseBody>> put(
-            @NonNull @Path("path") String path,
+            @NonNull @Path(value = "path", encoded = true) String path,
             @NonNull @Body RequestBody body
     );
 
     @PUT("{path}")
     Observable<Response<ResponseBody>> put(
-            @NonNull @Path("path") String path,
+            @NonNull @Path(value = "path", encoded = true) String path,
             @NonNull @HeaderMap Map<String, String> headerMap,
             @NonNull @Body RequestBody body
     );
@@ -126,14 +126,14 @@ interface RestService {
 
     @PATCH("{path}")
     Observable<Response<ResponseBody>> patch(
-            @NonNull @Path("path") String path,
+            @NonNull @Path(value = "path", encoded = true) String path,
             @NonNull @HeaderMap Map<String, String> headerMap,
             @NonNull @Body RequestBody body
     );
 
     @PATCH("{path}")
     Observable<Response<ResponseBody>> patch(
-            @NonNull @Path("path") String path,
+            @NonNull @Path(value = "path", encoded = true) String path,
             @NonNull @Body RequestBody body
     );
 
@@ -153,7 +153,8 @@ interface RestService {
 
     @DELETE("{path}")
     Observable<Response<Void>> delete(
-            @NonNull @Path("path") String path);
+            @NonNull @Path(value = "path", encoded = true) String path
+    );
 
     @DELETE
     Observable<Response<Void>> deleteAt(
@@ -162,14 +163,14 @@ interface RestService {
     @Multipart
     @POST("{path}")
     Observable<Response<ResponseBody>> postFile(
-            @NonNull @Path("path") String path,
+            @NonNull @Path(value = "path", encoded = true) String path,
             @NonNull @Part MultipartBody.Part file
     );
 
     @Multipart
     @POST("{path}")
     Observable<Response<ResponseBody>> postFile(
-            @NonNull @Path("path") String path,
+            @NonNull @Path(value = "path", encoded = true) String path,
             @NonNull @HeaderMap Map<String, String> headerMap,
             @NonNull @Part MultipartBody.Part file
     );
@@ -192,14 +193,14 @@ interface RestService {
     @Multipart
     @PUT("{path}")
     Observable<Response<ResponseBody>> putFile(
-            @NonNull @Path("path") String path,
+            @NonNull @Path(value = "path", encoded = true) String path,
             @NonNull @Part MultipartBody.Part file
     );
 
     @Multipart
     @PUT("{path}")
     Observable<Response<ResponseBody>> putFile(
-            @NonNull @Path("path") String path,
+            @NonNull @Path(value = "path", encoded = true) String path,
             @NonNull @HeaderMap Map<String, String> headerMap,
             @NonNull @Part MultipartBody.Part file
     );
