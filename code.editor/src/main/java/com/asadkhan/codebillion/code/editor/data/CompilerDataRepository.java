@@ -60,7 +60,7 @@ public class CompilerDataRepository extends DataRepository implements CompilerRe
     public Observable<Response<CompileResultDO>> fetchResults(String token) {
         String path = String.format("submissions/%s/", token);
         return networkService
-                .get(CompileResultDO.class, path)
+                .getWithQueries(CompileResultDO.class, path, networkService.getFieldsMap())
                 .compose(schedule());
     }
 
@@ -113,3 +113,4 @@ public class CompilerDataRepository extends DataRepository implements CompilerRe
 interface ApiReference {
 
 }
+

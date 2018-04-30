@@ -100,7 +100,7 @@ public class TemplateUtil {
                 "import java.lang.*;\n" +
                 "\n" +
                 "/* Name of the class has to be \"Main\" only if the class is public. */\n" +
-                "class SomeClass\n" +
+                "public class Main\n" +
                 "{\n" +
                 "\tpublic static void main (String[] args) throws java.lang.Exception\n" +
                 "\t{\n" +
