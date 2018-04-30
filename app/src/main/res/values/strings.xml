@@ -4,4 +4,6 @@
     <string name="submit">Submit</string>
     <string name="output">Output :</string>
     <string name="clear">Clear</string>
+    <string name="success">Execution succeeded!</string>
+    <string name="failure">Execution Failed!</string>
 </resources>

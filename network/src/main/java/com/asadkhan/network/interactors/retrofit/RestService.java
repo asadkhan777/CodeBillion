@@ -26,7 +26,7 @@ interface RestService {
 
     @GET("{path}")
     Observable<Response<ResponseBody>> get(
-            @NonNull @Path("path") String path);
+            @NonNull @Path(value = "path", encoded = true) String path);
 
     @GET("{path}")
     Observable<Response<ResponseBody>> get(
