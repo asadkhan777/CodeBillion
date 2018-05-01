@@ -11,6 +11,10 @@ Problem Statement:
 * Get the app by [downloading the debug-demo apk here](https://github.com/asadkhan777/CodeBillion/blob/master/app-debug-demo-2017_05_02.apk)
 
 
+
+## Sample Screens
+
+
 ![screenshot1](docs/images/mobile_xbillion_1.png)
 ![screenshot2](docs/images/mobile_xbillion_2.png)
 ![screenshot3](docs/images/mobile_xbillion_3.png)
