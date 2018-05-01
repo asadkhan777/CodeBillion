@@ -7,7 +7,14 @@ Problem Statement:
 
 ## Getting Started
 
-    Get the app by [downloading the debug-demo apk here](https://github.com/asadkhan777/CodeBillion/blob/master/app-debug-demo-2017_05_02.apk).
+
+* Get the app by [downloading the debug-demo apk here](https://github.com/asadkhan777/CodeBillion/blob/master/app-debug-demo-2017_05_02.apk)
+
+
+![screenshot1](CodeBillion/docs/images/mobile_xbillion_1.png)
+![screenshot2](CodeBillion/docs/images/mobile_xbillion_2.png)
+![screenshot3](CodeBillion/docs/images/mobile_xbillion_3.png)
+
 
 ## Built With
 
@@ -23,10 +30,6 @@ Problem Statement:
 
 * **Asad Khan** - [CodeBillion](https://github.com/asadkhan777/CodeBillion)
 
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
