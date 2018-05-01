@@ -24,4 +24,5 @@ public interface CompilerRepository extends Repository {
 
     Observable<Response<CompileResultDO>> fetchResults(String token);
 
+    Observable<Response<CompileResultDO>> compileAsync(CompileRequestDO requestDO);
 }

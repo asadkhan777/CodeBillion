@@ -3,9 +3,6 @@ package com.asadkhan.persistence.sharedPreferences;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * Created by nazmuddinmavliwala on 12/01/17.
- */
 public interface PreferenceService {
 
     void put(String key, int value);

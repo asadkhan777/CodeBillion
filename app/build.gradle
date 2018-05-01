@@ -45,5 +45,12 @@ dependencies {
     implementation libs.butterknife
     kapt libs.butterknifeCompiler
 
+    // Custom Animated Loader Views
+    implementation 'com.wang.avi:library:2.1.3'
+
+    // Parcelable helper
+    implementation 'org.parceler:parceler-api:1.1.8'
+    kapt 'org.parceler:parceler:1.1.8'
+
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
 }

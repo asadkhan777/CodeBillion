@@ -4,8 +4,11 @@ package com.asadkhan.codebillion.code.editor.base.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
 import java.util.concurrent.ConcurrentHashMap;
 
+@Parcel
 public class CompileResultDO extends CompileRequestDO {
 
     @SerializedName("stdout")

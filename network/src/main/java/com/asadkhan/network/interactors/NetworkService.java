@@ -145,6 +145,4 @@ public interface NetworkService {
     Observable<Response<Void>> deleteAt(
             @NonNull String url);
 
-
-    HashMap<String, String> getFieldsMap();
 }
