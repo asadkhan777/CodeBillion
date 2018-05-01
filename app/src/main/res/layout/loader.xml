@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/loader_frame"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            app:layout_constraintEnd_toEndOf="@id/loader_frame"
+            app:layout_constraintStart_toStartOf="@id/loader_frame"
+            app:layout_constraintTop_toTopOf="@id/loader_frame"
+            app:layout_constraintBottom_toBottomOf="@id/loader_frame"
+            android:layout_width="96dp"
+            android:layout_height="96dp"/>
+
+</android.support.constraint.ConstraintLayout>
