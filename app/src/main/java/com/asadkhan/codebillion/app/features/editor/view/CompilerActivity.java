@@ -261,15 +261,46 @@ public class CompilerActivity extends BaseActivity implements CompilerView {
 
         int statusCode = getResultCode(resultDO.getStatus());
         String success = "";
-        String error = "";
+        String error = getErrorMessage(statusCode);
 
+        show(tvResultTitle);
+        if (notEmpty(error)) {
+            showFailure();
+            String text = tvFailure.getText().toString();
+
+            text += "\n\n" + error;
+            if (notEmpty(resultDO.getStderr()))
+                text += "\n\n" + resultDO.getStderr();
+
+            if (notEmpty(resultDO.getCompileOutput()))
+                text += "\n\n" + resultDO.getCompileOutput();
+
+            tvFailure.setText(text);
+
+        } else {
+            String text = tvSuccess.getText().toString();
+            if (notEmpty(resultDO.getStdout())) {
+                success += "\n\n" + resultDO.getStdout();
+            }
+            if (notEmpty(resultDO.getCompileOutput())) {
+                success += "\n\n\n" + resultDO.getCompileOutput();
+            }
+            if (notEmpty(success)) {
+                String joint = text + success;
+                tvSuccess.setText(joint);
+            }
+        }
+    }
+
+    private String getErrorMessage(int statusCode) {
+        String error = "";
         switch (statusCode) {
 
             case 1:
             case 2:
                 showLoading();
                 hideResultWidget();
-                return;
+                break;
 
             case 3:
                 showSuccess();
@@ -309,34 +340,7 @@ public class CompilerActivity extends BaseActivity implements CompilerView {
             default:
                 error = "Something went wrong";
         }
-
-        show(tvResultTitle);
-        if (notEmpty(error)) {
-            showFailure();
-            String text = tvFailure.getText().toString();
-
-            text += "\n\n" + error;
-            if (notEmpty(resultDO.getStderr()))
-                text += "\n\n" + resultDO.getStderr();
-
-            if (notEmpty(resultDO.getCompileOutput()))
-                text += "\n\n" + resultDO.getCompileOutput();
-
-            tvFailure.setText(text);
-
-        } else {
-            String text = tvSuccess.getText().toString();
-            if (notEmpty(resultDO.getStdout())) {
-                success += "\n\n" + resultDO.getStdout();
-            }
-            if (notEmpty(resultDO.getCompileOutput())) {
-                success += "\n\n\n" + resultDO.getCompileOutput();
-            }
-            if (notEmpty(success)) {
-                String joint = text + success;
-                tvSuccess.setText(joint);
-            }
-        }
+        return error;
     }
 
     private void hideResultWidget() {
