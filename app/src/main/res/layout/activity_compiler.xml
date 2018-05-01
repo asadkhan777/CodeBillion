@@ -71,43 +71,84 @@
 
             </RelativeLayout>
 
-            <TextView
-                android:id="@+id/tv_result_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:padding="8dp"
-                android:text="@string/output"
-                android:textSize="16sp"
-                android:visibility="gone" />
 
-            <TextView
-                android:id="@+id/tv_result_success"
+            <LinearLayout
+                android:id="@+id/ll_loading"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:background="@color/bright_green"
-                android:drawableEnd="@android:drawable/ic_secure"
-                android:gravity="center_vertical"
-                android:padding="8dp"
-                android:text="@string/success"
-                android:textColor="@color/dark_green"
-                android:textSize="16sp"
-                android:visibility="gone" />
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="16dp"
+                android:paddingTop="16dp"
+                android:visibility="gone">
 
-            <TextView
-                android:id="@+id/tv_result_failure"
+
+                <com.wang.avi.AVLoadingIndicatorView
+                    android:id="@+id/avi_loading"
+                    style="@style/AVLoadingIndicatorView.Large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="8dp"
+                    android:paddingStart="8dp"
+                    android:visibility="visible"
+                    app:indicatorColor="@color/colorPrimary"
+                    app:indicatorName="PacmanIndicator" />
+
+                <TextView
+                    android:id="@+id/loading_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="8dp"
+                    android:paddingStart="8dp"
+                    android:text="@string/loading"
+                    android:textSize="22sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_result"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:background="@color/tuscan_red"
-                android:drawableEnd="@android:drawable/ic_delete"
-                android:gravity="center_vertical"
-                android:padding="8dp"
-                android:text="@string/failure"
-                android:textColor="@color/red"
-                android:textSize="16sp"
-                android:visibility="gone" />
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_result_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:padding="8dp"
+                    android:text="@string/output"
+                    android:textSize="20sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tv_result_success"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@color/bright_green_tr30"
+                    android:drawableEnd="@drawable/ic_success_48"
+                    android:gravity="center_vertical"
+                    android:padding="16dp"
+                    android:text="@string/success"
+                    android:textColor="@color/dark_green"
+                    android:textSize="18sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tv_result_failure"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@color/tuscan_red_tr40"
+                    android:drawableEnd="@drawable/ic_failure_48"
+                    android:gravity="center_vertical"
+                    android:padding="16dp"
+                    android:text="@string/failure"
+                    android:textColor="@color/red"
+                    android:textSize="18sp"
+                    android:visibility="gone" />
+
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
@@ -119,7 +160,7 @@
         android:background="@color/colorPrimaryDark"
         android:text="@string/submit"
         android:textColor="@android:color/white"
-        android:textSize="22sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@id/content"
         app:layout_constraintEnd_toEndOf="@id/content"
         app:layout_constraintStart_toStartOf="@id/content" />

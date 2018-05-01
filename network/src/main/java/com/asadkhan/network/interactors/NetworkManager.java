@@ -200,12 +200,5 @@ public class NetworkManager implements NetworkService {
         return this.service.deleteAt(url);
     }
 
-    @Override
-    public HashMap<String, String> getFieldsMap() {
-        String fields = "source_code,language_id,stdin,expected_output,cpu_time_limit,cpu_extra_time,wall_time_limit,memory_limit,stack_limit,max_processes_and_or_threads,enable_per_process_and_thread_time_limit,enable_per_process_and_thread_memory_limit,max_file_size,number_of_runs,stdout,stderr,compile_output,message,exit_code,exit_signal,status,created_at,finished_at,token,time,wall_time,memory";
-        HashMap<String, String> map = new HashMap<>();
-        map.put("fields", fields);
-        return map;
-    }
 
 }

@@ -272,10 +272,12 @@
     <color name="rosewood">#65000B</color>
     <color name="blue_koi">#659EC7</color>
     <color name="tuscan_red">#66424D</color>
+    <color name="tuscan_red_tr40">#4066424D</color>
     <color name="fern_green">#667C26</color>
     <color name="sky_blue">#6698FF</color>
     <color name="medium_aquamarine">#66DDAA</color>
     <color name="bright_green">#66FF00</color>
+    <color name="bright_green_tr30">#3066FF00</color>
     <color name="medium_taupe">#674C47</color>
     <color name="purple_heart">#69359C</color>
     <color name="blue_lotus">#6960EC</color>

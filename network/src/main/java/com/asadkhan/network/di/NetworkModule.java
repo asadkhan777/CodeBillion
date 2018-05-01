@@ -1,8 +1,6 @@
 package com.asadkhan.network.di;
 
 
-import android.support.annotation.NonNull;
-
 import com.asadkhan.network.BuildConfig;
 import com.asadkhan.network.interactors.NetworkManager;
 import com.asadkhan.network.interactors.NetworkService;
@@ -20,7 +18,6 @@ import dagger.Module;
 import dagger.Provides;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -36,10 +33,12 @@ public class NetworkModule {
     private static final String PROD_BASE_URL = "https://api.judge0.com";
 
     // At home
-    // private static final String DEBUG_BASE_URL = "http://192.1681.11:3000";
+    // TKKMN Network
+    private static final String DEBUG_BASE_URL = "http://192.168.1.11:3000";
 
     // At work
-    private static final String DEBUG_BASE_URL = "http:192.168.1.73:3000";
+    // AJ_Geek network IP address
+    // private static final String DEBUG_BASE_URL = "http:192.168.1.73:3000";
 
     @Provides
     @Singleton
@@ -71,24 +70,6 @@ public class NetworkModule {
                 .build();
     }
 
-    @NonNull
-    private Interceptor urlDecodingInterceptor() {
-        return chain -> {
-            Request request = chain.request();
-            String urlEncoded;
-            String urlDecoded;
-
-            urlEncoded = request.url().toString();
-            urlDecoded = decodeUrlFromRequest(urlEncoded);
-
-            Request newRequest = request.newBuilder()
-                    .url(urlDecoded)
-                    .build();
-
-            return chain.proceed(newRequest);
-        };
-    }
-
     private String decodeUrlFromRequest(String urlEncoded) {
         String urlDecoded;
         try {
@@ -110,8 +91,8 @@ public class NetworkModule {
             baseUrl = PROD_BASE_URL;
         }
         Retrofit.Builder builder = new Retrofit.Builder()
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .baseUrl(baseUrl)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(okHttpClient);
         return builder.build();
     }

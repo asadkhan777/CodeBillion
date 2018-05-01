@@ -7,6 +7,8 @@ import com.asadkhan.codebillion.code.editor.base.presenters.DataRepository;
 import com.asadkhan.network.interactors.NetworkService;
 import com.asadkhan.threading.threadhandlers.ThreadHandler;
 
+import java.util.HashMap;
+
 import javax.inject.Inject;
 
 import io.reactivex.Observable;
@@ -60,13 +62,29 @@ public class CompilerDataRepository extends DataRepository implements CompilerRe
     public Observable<Response<CompileResultDO>> fetchResults(String token) {
         String path = String.format("submissions/%s/", token);
         return networkService
-                .getWithQueries(CompileResultDO.class, path, networkService.getFieldsMap())
+                .getWithQueries(CompileResultDO.class, path, getFieldsMap())
                 .compose(schedule());
     }
 
+    @Override
+    public Observable<Response<CompileResultDO>> compileAsync(CompileRequestDO requestDO) {
+        String path = "/submissions/";
+        HashMap<String, String> queryMap = getFieldsMap();
+        queryMap.put("wait", "true");
+        return networkService
+                .getWithQueries(CompileResultDO.class, path, queryMap)
+                .compose(schedule());
+    }
 
     public static CompileRequestDO createRequest(String sourceCode, int languageId) {
         return new CompileRequestDO(sourceCode, languageId);
+    }
+
+    public HashMap<String, String> getFieldsMap() {
+        String fields = "source_code,language_id,stdin,expected_output,cpu_time_limit,cpu_extra_time,wall_time_limit,memory_limit,stack_limit,max_processes_and_or_threads,enable_per_process_and_thread_time_limit,enable_per_process_and_thread_memory_limit,max_file_size,number_of_runs,stdout,stderr,compile_output,message,exit_code,exit_signal,status,created_at,finished_at,token,time,wall_time,memory";
+        HashMap<String, String> map = new HashMap<>();
+        map.put("fields", fields);
+        return map;
     }
 }
 
