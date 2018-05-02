@@ -8,7 +8,7 @@ Problem Statement:
 ## Getting Started
 
 
-* Get the app by [downloading the debug-demo apk here](https://github.com/asadkhan777/CodeBillion/blob/master/app-debug-demo-2017_05_02.apk)
+* Get the app by [downloading the debug-demo apk here](https://github.com/asadkhan777/CodeBillion/blob/master/app-debug-demo.apk)
 
 
 
