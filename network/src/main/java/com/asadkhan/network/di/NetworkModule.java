@@ -30,11 +30,11 @@ public class NetworkModule {
 
     private static final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss";
 
-    private static final String PROD_BASE_URL = "https://api.judge0.com";
+    public static final String PROD_BASE_URL = "https://api.judge0.com";
 
     // At home
     // TKKMN Network
-    private static final String DEBUG_BASE_URL = "http://192.168.1.11:3000";
+    public static final String DEBUG_BASE_URL = "http://192.168.1.11:3000";
 
     // At work
     // AJ_Geek network IP address
@@ -79,6 +79,15 @@ public class NetworkModule {
             urlDecoded = urlEncoded;
         }
         return urlDecoded;
+    }
+
+    @Provides
+    @Singleton
+    public Retrofit.Builder provideRetrofitBuilder(OkHttpClient okHttpClient) {
+        Retrofit.Builder builder = new Retrofit.Builder()
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .client(okHttpClient);
+        return builder;
     }
 
     @Provides

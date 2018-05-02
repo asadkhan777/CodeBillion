@@ -3,6 +3,7 @@ package com.asadkhan.network.interactors.retrofit;
 
 import com.asadkhan.network.helpers.GsonRequestBodyConverter;
 import com.asadkhan.network.helpers.GsonResponseBodyConverter;
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
 
@@ -20,16 +21,23 @@ import okhttp3.ResponseBody;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
+import static com.asadkhan.network.di.NetworkModule.PROD_BASE_URL;
+
 @Singleton
 public class RetrofitManager implements RetrofitService {
 
-    // private static final String TAG = RetrofitManager.class.getName();
+    private static final String BASE_URL = "base_url";
+
     private final Gson gson;
     private RestService restService;
+    Retrofit retrofit;
+    Retrofit.Builder builder;
 
     @Inject
-    public RetrofitManager(Retrofit retrofitInstance, Gson gson) {
-        this.restService = retrofitInstance.create(RestService.class);
+    public RetrofitManager(Retrofit.Builder retrofitBuilder, Gson gson) {
+        this.builder = retrofitBuilder;
+        this.retrofit = builder.baseUrl(PROD_BASE_URL).build();
+        this.restService = retrofit.create(RestService.class);
         this.gson = gson;
     }
 
@@ -261,6 +269,15 @@ public class RetrofitManager implements RetrofitService {
 
     public Observable<Response<Void>> deleteAt(@NonNull String url) {
         return this.restService.deleteAt(url);
+    }
+
+    @Override
+    public void reset() {
+        String url = FirebaseRemoteConfig.getInstance().getString(BASE_URL);
+        if (url != null && !url.isEmpty()) {
+            retrofit = builder.baseUrl(url).build();
+            restService = retrofit.create(RestService.class);
+        }
     }
 
     /**
