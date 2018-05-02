@@ -49,6 +49,10 @@ dependencies {
     implementation 'org.parceler:parceler-api:1.1.8'
     kapt 'org.parceler:parceler:1.1.8'
 
+    implementation libs.firebaseCore
+    implementation libs.firebaseCrash
+    implementation libs.firebaseConfig
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
