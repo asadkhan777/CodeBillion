@@ -178,4 +178,5 @@ public interface RetrofitService {
 
     Observable<Response<Void>> deleteAt(@NonNull String url);
 
+    void reset();
 }

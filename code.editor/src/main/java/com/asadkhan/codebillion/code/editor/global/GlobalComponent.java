@@ -8,6 +8,7 @@ import com.asadkhan.codebillion.code.editor.data.CompilerRepository;
 import com.asadkhan.codebillion.code.editor.data.di.DataModule;
 import com.asadkhan.network.di.NetworkModule;
 import com.asadkhan.network.interactors.NetworkService;
+import com.asadkhan.network.interactors.retrofit.RetrofitService;
 import com.asadkhan.persistence.auth.AuthenticationService;
 import com.asadkhan.persistence.di.PersistenceModule;
 import com.asadkhan.persistence.sharedPreferences.PreferenceService;
@@ -44,6 +45,7 @@ public interface GlobalComponent {
 
         NetworkService getNetworkService();
 
+        RetrofitService getRetrofitService();
 
 
         /** Persistence dependencies

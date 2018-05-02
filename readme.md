@@ -29,6 +29,7 @@ Problem Statement:
 * [Butterknife](https://github.com/JakeWharton/butterknife) - Bind Android views and callbacks to fields and methods.
 * [AVLoadingIndicatorView](https://github.com/81813780/AVLoadingIndicatorView) - a collection of nice loading animations for Android.
 * [Maven](https://maven.apache.org/) - Dependency Management
+* [judge0](https://github.com/judge0/api) - Web API for code compilation and execution.
 
 ## Authors
 

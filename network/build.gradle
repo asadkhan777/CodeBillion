@@ -53,6 +53,10 @@ dependencies {
     api libs.gson
     api libs.okHttpLogging
 
+    implementation libs.firebaseCore
+    implementation libs.firebaseCrash
+    implementation libs.firebaseConfig
+
     testImplementation 'junit:junit:4.12'
 
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

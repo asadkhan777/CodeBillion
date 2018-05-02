@@ -8,6 +8,9 @@ ext {
             buildToolsVersion     : "27.0.3",
             supportLib            : '27.1.0',
 
+            playServicesVersion   : '15.0.0',
+            firebaseVersion       : '15.0.0',
+
             constraintVersion     : '1.1.1',
             crashlyticsVer        : '2.9.1',
 
@@ -38,6 +41,16 @@ ext {
 
             butterknife           : "com.jakewharton:butterknife:$versions.butterKnifeVersion",
             butterknifeCompiler   : "com.jakewharton:butterknife-compiler:$versions.butterKnifeVersion",
+
+            // Google
+            playServicesBase      : "com.google.android.gms:play-services-base:$versions.playServicesVersion",
+
+            // Firebase
+            firebaseCore          : "com.google.firebase:firebase-core:$versions.firebaseVersion",
+            firebaseCrash         : "com.google.firebase:firebase-crash:$versions.firebaseVersion",
+            firebasePerf          : "com.google.firebase:firebase-perf:$versions.firebaseVersion",
+            firebaseConfig        : "com.google.firebase:firebase-config:$versions.firebaseVersion",
+            firebaseFCM           : "com.google.firebase:firebase-messaging:$versions.firebaseVersion",
 
             dagger                : "com.google.dagger:dagger:$versions.daggerVersion",
             daggerJSR250          : "javax.annotation:jsr250-api:$versions.jsr250Version",
