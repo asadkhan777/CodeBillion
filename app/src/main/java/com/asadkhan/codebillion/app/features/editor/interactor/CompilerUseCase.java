@@ -20,10 +20,9 @@ import retrofit2.Response;
 @SubClassScope
 public class CompilerUseCase extends UseCase<CompilerRepository> {
 
+    public static final int MAX_RETRIES = 10;
     private static final int IN_QUEUE = 1;
     private static final int IN_EXECUTION = 2;
-
-    public static final int MAX_RETRIES = 5;
     public static int CURRENT_RETRY = 0;
 
     private int statusId = 1;
@@ -84,7 +83,7 @@ public class CompilerUseCase extends UseCase<CompilerRepository> {
     public void fetchSubmission(String token, BaseObserver<CompileResultDO> observer) {
         // tryTimerRetry();
         statusId = IN_QUEUE;
-        CURRENT_RETRY = 0;
+        CURRENT_RETRY = 1;
         repository
                 .fetchResults(token)
                 .map(Response::body)

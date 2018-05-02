@@ -59,7 +59,7 @@ public class CompilerDataRepository extends DataRepository implements CompilerRe
     }
 
     @Override
-    public Observable<Response<CompileResultDO>> fetchResults(String token) {
+    public Observable<Response<CompileResultDO>>  fetchResults(String token) {
         String path = String.format("submissions/%s/", token);
         return networkService
                 .getWithQueries(CompileResultDO.class, path, getFieldsMap())
