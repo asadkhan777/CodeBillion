@@ -92,7 +92,7 @@ public class CompilerUseCase extends UseCase<CompilerRepository> {
                     CURRENT_RETRY++;
                     if (statusId == IN_QUEUE || statusId == IN_EXECUTION) {
                         return Observable.just(token)
-                                .delay(CURRENT_RETRY, TimeUnit.SECONDS)
+                                .delay(3000, TimeUnit.MILLISECONDS)
                                 .switchMap(repository::fetchResults)
                                 .map(Response::body);
                     }

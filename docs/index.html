@@ -21,6 +21,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <script type="application/x-javascript">
          addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
 
+
     </script>
     <!-- js -->
     <!-- start-smoth-scrolling -->
@@ -33,11 +34,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
 				});
 			});
-
-
-
-
-
 
     </script>
     <!-- start-smooth-scrolling -->
@@ -72,11 +68,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						  });
 					
 						});
-
-
-
-
-
 
             </script>
             <!--//End-slider-script -->
@@ -176,7 +167,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 and let us know how your experience was!
             </p>
             <div class="button">
-                <a href="#">DOWNLOAD</a>
+                <a href="https://github.com/asadkhan777/CodeBillion/blob/master/app-debug-demo.apk?raw=true">DOWNLOAD</a>
             </div>
         </div>
         <div class="col-md-6">
@@ -237,20 +228,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!--//pop-up-box -->
 
 <script>
-						$(document).ready(function() {
-						$('.popup-with-zoom-anim').magnificPopup({
-							type: 'inline',
-							fixedContentPos: false,
-							fixedBgPos: true,
-							overflowY: 'auto',
-							closeBtnInside: true,
-							preloader: false,
-							midClick: true,
-							removalDelay: 300,
-							mainClass: 'my-mfp-zoom-in'
-						});
+    $(document).ready(function() {
+        $('.popup-with-zoom-anim').magnificPopup({
+            type: 'inline',
+            fixedContentPos: false,
+            fixedBgPos: true,
+            overflowY: 'auto',
+            closeBtnInside: true,
+            preloader: false,
+            midClick: true,
+            removalDelay: 300,
+            mainClass: 'my-mfp-zoom-in'
+        });
 																						
-						});
+    });
     function sendMail() {
         var link = "mailto:asadkhan1776@gmail.com"
              + "?cc=admin@xbillionlabs.com"
@@ -259,6 +250,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         ;
     window.location.href = link;
 }
+
 
 </script>
 
@@ -279,9 +271,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </div>
                     <div class="clearfix"></div>
                     <div class="text-field-area ">
-                        <textarea id="message_text" placeholder="Message....." required=""></textarea>
+                        <textarea id="message_text" placeholder="Message....."
+                                  required=""></textarea>
 
-                        <input type="submit" value="SEND" style="col-md-12" onclick="sendMail(); return false;">
+                        <input type="submit" value="SEND" style="col-md-12"
+                               onclick="sendMail(); return false;">
 
                         <div class="pen-img"></div>
                     </div>
@@ -326,8 +320,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         */
         $().UItoTop({ easingType: 'easeOutQuart' });
     });
-
-
 
 </script>
 <a href="#" id="toTop" style="display: block;">
